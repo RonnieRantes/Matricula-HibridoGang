@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EstudianteController {
 
 	@RequestMapping("/")
-	public String irMenuu(Model model) {
+	public String irMenu(Model model) {
 		return "menu";
 	}
 }
