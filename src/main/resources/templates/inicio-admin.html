@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1">   
+        <link href="http://fonts.cdnfonts.com/css/lexend-deca" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <link href="/css/general.css" rel="stylesheet" id="bootstrap-css"></link>
+    </head>
+    <body>
+    	<div th:replace="fragments/navbar :: nav"></div>
+        <div class="container cont1" style="margin-top: 1%;">
+            <div class="row center">
+                <div class="form-group row">
+                    <h1 style="margin-bottom: 3%;">¿Qué acción deseas realizar?</h1>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/carreras.png" >
+                        </button>         
+                        <h3 class="txtcirculos">Carreras</h3>        
+                    </div>
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/cursos.png" >
+                        </button>  
+                        <h3 class="txtcirculos">Cursos</h3>        
+                    </div>
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/docentes.png" >
+                        </button>         
+                        <h3 class="txtcirculos">Docentes</h3>        
+                    </div>
+                    <div class="col-sm-6 coladmin">
+                    	<a th:href="@{/admin/estudiantes/}">
+	                        <button type="submit" class="btn btn-primary circuloadmin">
+	                            <img class="imgcirculoadmin" src="/img/alumnos.png" >
+	                        </button> 
+                        </a> 
+                        <h3 class="txtcirculos">Estudiantes</h3>        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/horarios.png" style="margin-left: 10%;" >
+                        </button>  
+                        <h3 class="txtcirculos">Horarios</h3>        
+                    </div>
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/matriculas.png" style="margin-left: 10%;">
+                        </button>         
+                        <h3 class="txtcirculos">Matrículas</h3>        
+                    </div>
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/secciones.png" >
+                        </button>  
+                        <h3 class="txtcirculos">Secciones</h3>        
+                    </div>
+                    <div class="col-sm-6 coladmin">
+                        <button type="submit" class="btn btn-primary circuloadmin">
+                            <img class="imgcirculoadmin" src="/img/semestres.png" >
+                        </button>         
+                        <h3 class="txtcirculos">Semestres</h3>        
+                    </div>
+                </div>
+
+        </div>
+        </div>
+    	<div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>
