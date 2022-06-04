@@ -46,7 +46,7 @@ public class EstudianteController {
 		model.addAttribute("listaCarreras", cService.listar());
 		model.addAttribute("titulo", "Registrar estudiante");
 		model.addAttribute("btn", "Registrar");
-		return "/Entidad/estudiante";
+		return "estudiante";
 	}
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/registrar")
@@ -82,7 +82,7 @@ public class EstudianteController {
 				model.addAttribute("mensaje", "Ocurrio un error");
 			}
 		}
-		return "/Entidad/estudiante";
+		return "estudiante";
 	}
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable String id, Model model, RedirectAttributes objRedir)
@@ -98,7 +98,7 @@ public class EstudianteController {
 			model.addAttribute("titulo", "Modificar estudiante");
 			model.addAttribute("btn", "Actualizar");
 			model.addAttribute("estudiante", objEstudiante);
-			return "/Entidad/estudiante";
+			return "estudiante";
 		}
 	}
 	@RequestMapping("/eliminar")
