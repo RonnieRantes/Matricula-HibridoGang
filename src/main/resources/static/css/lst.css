@@ -92,7 +92,7 @@ h5{
 table.dataTable thead th {
 	background-color: #224957;
 	vertical-align: middle;
-	font-size: 5px;
+	font-size: 12px;
 	width: 0px;
 	color: white;
 	border-color:#224957;
@@ -108,7 +108,7 @@ table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_des
 table.dataTable tbody td {
 	vertical-align: middle;
 	height: 20px;
-	font-size: 1px;
+	font-size: 12px;
 	border-color:#224957;
 	border-width: 2px;
 }
@@ -124,11 +124,11 @@ table.dataTable tbody td {
 	height:100%;
 }
 a.page-link{
-	font-size: 1px;
+	font-size: 12px;
 }
 .pag{
 	height: 10px;
-	font-size: 1px;
+	font-size: 12px;
 	display: flex;
 	justify-content: center;
 }
