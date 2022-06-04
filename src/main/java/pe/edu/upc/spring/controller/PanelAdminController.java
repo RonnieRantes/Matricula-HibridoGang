@@ -16,6 +16,6 @@ public class PanelAdminController {
 	@RequestMapping("/estudiantes/")
 	public String irPaginaEstudiantes(Model model) {
 		model.addAttribute("listaEstudiantes", eService.listar());
-		return "/Admin/lstEstudiante";
+		return "lstEstudiante";
 	}
 }
