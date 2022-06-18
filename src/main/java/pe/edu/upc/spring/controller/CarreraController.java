@@ -31,6 +31,7 @@ public class CarreraController {
 		else {
 			boolean flag = cService.registrar(objCarrera);
 			model.addAttribute("titulo", "REGISTRAR CARRRERA");
+			model.addAttribute("btn", "Registrar");
 			if (flag) return "redirect:/admin/carreras/";
 			else model.addAttribute("mensaje", "Ocurrio un error");
 		}

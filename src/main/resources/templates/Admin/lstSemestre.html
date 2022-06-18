@@ -21,38 +21,39 @@
 			<a th:href="@{/inicio/}" class="btn btn-primary btninvertido">Regresar</a>
 		</div>
 		<div class="col-sm-6 colttexto">
-			<h1>Estudiantes</h1>
+			<h1>Semestres</h1>
 		</div>
 		<div class="col-sm-6 coltboton">
-			<a th:href="@{/estudiante/}" class="btn btn-primary">Agregar</a>
+			<a th:href="@{/semestre/}" class="btn btn-primary">Agregar</a>
 		</div>
 	</div>
 	<div class="perfil">
 		<table class="table table-hover table-striped">
 			<thead>
 			<tr>
-				<th class="text-center">CÓDIGO</th>
-				<th class="text-center">INGRESO</th>
-				<th class="text-center">CARRERA</th>
-				<th class="text-center">NOMBRES</th>
-				<th class="text-center">APELLIDOS</th>
-				<th class="text-center">CORREO EDUCATIVO</th>
-				<th class="text-center">CORREO PERSONAL</th>
-				<th class="text-center">TELÉFONO</th>
+				<th class="text-center">CODIGO</th>
+				<th class="text-center">AÑO</th>
+				<th class="text-center">PERIODO</th>
 				<th class="text-center"></th>
 			</tr>
 			</thead>
 			<tbody>
-			<tr th:each="estudiante: ${listaEstudiantes}">
-				<td class="text-center celda"><a th:href="@{'/estudiante/modificar/'}+${estudiante.codigo}" th:text="${estudiante.codigo}"></a></td>
-				<td class="text-center celda" th:text="${estudiante.ingreso.getCompleto()}"></td>
-				<td class="text-center celda" th:text="${estudiante.carrera.nombre}"></td>
-				<td class="text-center celda" th:text="${estudiante.nombres}"></td>
-				<td class="text-center celda" th:text="${estudiante.apellidos}"></td>
-				<td class="text-center celda" th:text="${estudiante.correoedu}"></td>
-				<td class="text-center celda" th:text="${estudiante.correoper}"></td>
-				<td class="text-center celda" th:text="${estudiante.telefono}"></td>
-				<td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/estudiante/eliminar/?id=}+${estudiante.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+			<tr th:each="semestre: ${listaSemestres}">
+				<td class="text-center celda"><a th:href="@{'/semestre/modificar/'}+${semestre.idSemestre}" th:text="${semestre.idSemestre}"></a></td>
+				<td class="text-center celda" th:text="${semestre.anio}"></td>
+				<td class="text-center celda" th:text="${semestre.periodo}"></td>
+				<td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/semestre/eliminar/?id=}+${semestre.idSemestre}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+				<!--
+                <td class="text-center celda"><a th:href="@{'/semestre/modificar/'}+${semestre.codigo}" th:text="${semestre.codigo}"></a></td>
+                <td class="text-center celda" th:text="${semestre.ingreso.getCompleto()}"></td>
+                <td class="text-center celda" th:text="${semestre.carrera.nombre}"></td>
+                <td class="text-center celda" th:text="${semestre.nombres}"></td>
+                <td class="text-center celda" th:text="${semestre.apellidos}"></td>
+                <td class="text-center celda" th:text="${semestre.correoedu}"></td>
+                <td class="text-center celda" th:text="${semestre.correoper}"></td>
+                <td class="text-center celda" th:text="${semestre.telefono}"></td>
+                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/semestre/eliminar/?id=}+${semestre.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+                -->
 			</tr>
 			</tbody>
 		</table>

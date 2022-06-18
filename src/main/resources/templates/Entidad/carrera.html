@@ -4,13 +4,18 @@
         <meta charset="UTF-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1">   
         <link href="http://fonts.cdnfonts.com/css/lexend-deca" rel="stylesheet">
-        <link href="/static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
-        <link href="/static/css/general.css" rel="stylesheet" id="general-css"></link>
-		<link href="/static/css/formulario.css" rel="stylesheet" id="general-css"></link>
+        <link href="/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <link href="/css/general.css" rel="stylesheet" id="general-css"></link>
+		<link href="/css/formulario.css" rel="stylesheet" id="general-css"></link>
     </head>
     <body>
     	<div th:replace="fragments/navbar :: nav"></div>
-    	<form class="container cont1" th:action="@{/estudiante/registrar}" method="post" th:object="${estudiante}">
+    	<form class="container cont1" th:action="@{/carrera/registrar}" method="post" th:object="${carrera}">
+			<div class="form-group row perfil" style="margin-bottom: 1.5%;">
+				<h1 th:text="${titulo}"></h1>
+			</div>
+			<input class="form-control text-center" type="hidden" th:field="*{nombre}" maxlength="50" autofocus required />
+			<!--
 				<div class="form-group row perfil" style="margin-bottom: 1.5%;">
 					<h1 th:text="${titulo}"></h1>
 				</div>
@@ -75,15 +80,17 @@
 						<input class="form-control text-center" type="email" th:field="*{correoper}" maxlength="50"/>    
 					</div>
 				</div>
+				-->
 				<div class="form-group row perfil" style="margin-bottom: 0%;">
 					<div class="col-sm-6 colajustes izquierda">
-						<a th:href="@{/admin/estudiantes/}" class="btn btninvertido btnajustes">Regresar</a>
+						<a th:href="@{/admin/carreras/}" class="btn btninvertido btnajustes">Regresar</a>
 					</div>
 					<div class="col-sm-6 colajustes derecha">
 						<button type="submit" class="btn btn-primary btnajustes" th:text="${btn}"></button>  
 					</div>
 				</div>
                 <h4 th:text="${mensaje}" class="error"></h4>
+
     	</form>
     	<div th:replace="fragments/footer :: footer"></div>
     </body>
