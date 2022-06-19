@@ -23,15 +23,17 @@ public class CarreraController {
 	@RequestMapping("/")
 	public String irPaginaEntidad(Model model) {
 		model.addAttribute("carrera", new Carrera());
+		model.addAttribute("btn", "Registrar");
+		model.addAttribute("titulo", "REGISTRAR CARRRERA");
 		return "/Entidad/carrera";
 	}
+	@SuppressWarnings("deprecation")
 	@RequestMapping("/registrar")
 	public String registrar(@ModelAttribute Carrera objCarrera, BindingResult binRes, Model model, RedirectAttributes objRedir) throws ParseException{
 		if(binRes.hasErrors()) model.addAttribute("mensaje", "Ocurrio un error");
 		else {
 			boolean flag = cService.registrar(objCarrera);
 			model.addAttribute("titulo", "REGISTRAR CARRRERA");
-			model.addAttribute("btn", "Registrar");
 			if (flag) return "redirect:/admin/carreras/";
 			else model.addAttribute("mensaje", "Ocurrio un error");
 		}
@@ -48,6 +50,7 @@ public class CarreraController {
 		else {
 			model.addAttribute("titulo", "MODIFICAR CARRERA");
 			model.addAttribute("carrera", objCarrera);
+			model.addAttribute("btn", "Actualizar");
 			return "/Entidad/carrera";
 		}
 	}
