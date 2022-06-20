@@ -43,7 +43,7 @@ public class CursoController {
             model.addAttribute("titulo", "Registrar curso");
             model.addAttribute("btn", "Registrar");
         }
-        return "docente";
+        return "curso";
     }
     @RequestMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, Model model, RedirectAttributes objRedir)
@@ -51,7 +51,7 @@ public class CursoController {
         Curso objCurso = cService.buscarId(id);
         if (objCurso == null) {
             objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-            return "redirect:/admin/docentes/";
+            return "redirect:/admin/cursos/";
         }
         else {
             model.addAttribute("titulo", "Modificar curso");

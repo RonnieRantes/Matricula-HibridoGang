@@ -27,7 +27,7 @@ public class Curso implements Serializable{
         super();
     }
 
-    public Docente(String codigo, String nombre, String obligatorio) {
+    public Curso(String codigo, String nombre, String obligatorio) {
         super();
         this.codigo = codigo;
         this.nombre = nombre;
