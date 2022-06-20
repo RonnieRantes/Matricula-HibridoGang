@@ -55,7 +55,7 @@ public class DocenteController {
             objDocente.setNombres(WordUtils.capitalizeFully(objDocente.getNombres()));
             objDocente.setApellidos(WordUtils.capitalizeFully(objDocente.getApellidos()));
             objDocente.setCorreoPer(WordUtils.capitalizeFully(objDocente.getCorreoper()));
-            objDocente.setTelefono(objDocente.getTelefono())
+            objDocente.setTelefono(objDocente.getTelefono());
             model.addAttribute("titulo", "Registrar docente");
             model.addAttribute("btn", "Registrar");
             //REGISTRAR
