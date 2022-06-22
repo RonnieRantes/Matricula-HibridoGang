@@ -1,9 +1,7 @@
 package pe.edu.upc.spring.controller;
 
 import org.apache.el.parser.ParseException;
-import org.apache.commons.lang3.text.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,22 +29,20 @@ public class CursoController {
         model.addAttribute("btn", "Registrar");
         return "curso";
     }
-    @SuppressWarnings("deprecation")
     @RequestMapping("/registrar")
     public String registrar(@ModelAttribute Curso objCurso, BindingResult binRes, Model model, RedirectAttributes objRedir) throws ParseException{
         if(binRes.hasErrors()) model.addAttribute("mensaje", "Ocurrio un error");
         else {
-            Curso objC = cService.buscarId(objCurso.getCodigo());
-            objCurso.setCodigo(WordUtils.capitalizeFully(objCurso.getCodigo()));
-            objCurso.setNombre(WordUtils.capitalizeFully(objCurso.getNombre()));
-            objCurso.setObligatorio(WordUtils.capitalizeFully(objCurso.getObligatorio()));
+            objCurso.setCodigo(objCurso.getCodigo());
+            objCurso.setNombre(objCurso.getNombre());
+            objCurso.setObligatorio(objCurso.getObligatorio());
             model.addAttribute("titulo", "Registrar curso");
             model.addAttribute("btn", "Registrar");
         }
         return "curso";
     }
     @RequestMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, Model model, RedirectAttributes objRedir)
+    public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
     {
         Curso objCurso = cService.buscarId(id);
         if (objCurso == null) {
@@ -61,7 +57,7 @@ public class CursoController {
         }
     }
     @RequestMapping("/eliminar")
-    public String eliminar(@RequestParam(value="id") String id, RedirectAttributes objRedir) {
+    public String eliminar(@RequestParam(value="id") Integer id, RedirectAttributes objRedir) {
         try {
             if (id!=null) {
                 cService.eliminar(id);

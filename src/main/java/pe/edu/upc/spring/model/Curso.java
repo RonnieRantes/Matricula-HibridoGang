@@ -43,15 +43,15 @@ public class Curso implements Serializable{
     }
 
     public String getNombre() {
-        return nombres;
+        return nombre;
     }
 
-    public void setNombre(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getObligatorio() {
-        return apellidos;
+        return obligatorio;
     }
 
     public void setObligatorio(String obligatorio) {

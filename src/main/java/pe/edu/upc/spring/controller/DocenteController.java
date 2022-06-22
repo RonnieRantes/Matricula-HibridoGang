@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import pe.edu.upc.spring.model.Docente;
 import pe.edu.upc.spring.model.Semestre;
 import pe.edu.upc.spring.model.Usuario;
-import pe.edu.upc.spring.model.Rol;
 import pe.edu.upc.spring.service.IDocenteService;
 import pe.edu.upc.spring.service.IRolService;
 import pe.edu.upc.spring.service.ISemestreService;
@@ -54,14 +52,14 @@ public class DocenteController {
             boolean flag = false;
             objDocente.setNombres(WordUtils.capitalizeFully(objDocente.getNombres()));
             objDocente.setApellidos(WordUtils.capitalizeFully(objDocente.getApellidos()));
-            objDocente.setCorreoPer(WordUtils.capitalizeFully(objDocente.getCorreoper()));
+            objDocente.setCorreoper(WordUtils.capitalizeFully(objDocente.getCorreoper()));
             objDocente.setTelefono(objDocente.getTelefono());
             model.addAttribute("titulo", "Registrar docente");
             model.addAttribute("btn", "Registrar");
             //REGISTRAR
-            if(objD == null) {
-                Semestre objS;
-                objDocente.setCodigo(dService.Codigo(objS.getAnio() + objS.getPeriodo()));
+            if(objD == null) {                
+				Semestre objS = sService.buscarId(objDocente.getIngreso().getIdSemestre());
+                objDocente.setCodigo(dService.Codigo(objS.getAnio(), objS.getPeriodo()));
                 objDocente.setCorreoedu(objDocente.getCodigo() + "@upc.edu.pe");
                 flag = dService.registrar(objDocente);
                 if (flag) {

@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +19,12 @@ public class Seccion implements Serializable{
     @Column(name="codigoSeccion",length=10,unique=true,nullable=false)
     private String codigo;
 
-    @Column(name="CursoSeccion",length=50,nullable=false)
+    @ManyToOne
+	@JoinColumn(name="CursoSeccion",nullable=false)
     private Curso curso;
 
-    @Column(name="DocenteSeccion",length=50,nullable=false)
+    @ManyToOne
+	@JoinColumn(name="DocenteSeccion",nullable=false)
     private Docente docente;
 
     public Seccion() {
@@ -46,7 +50,7 @@ public class Seccion implements Serializable{
         return curso;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 
@@ -54,7 +58,7 @@ public class Seccion implements Serializable{
         return docente;
     }
 
-    public void setDocente(String obligatorio) {
+    public void setDocente(Docente docente) {
         this.docente = docente;
     }
 

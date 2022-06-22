@@ -46,8 +46,21 @@
         <div class="col-sm-6 colinput">
             <input class="form-control text-center" type="text" th:field="*{telefono}" pattern=".{9}"/>
         </div>
+    </div>    
+    <div class="perfil">
+        <div class="col-sm-6 coltexto">
+            <h3>Ingreso:</h3>
+        </div>
+        <div class="col-sm-6 colinput">
+            <select class="form-control text-center" th:field="*{ingreso.idSemestre}">
+                <option th:each="s: ${listaSemestres}"
+                    th:value="${s.idSemestre}"
+                    th:text="${s.getCompleto()}"
+                    th:selected="(${s.idSemestre} == *{ingreso.idSemestre})">
+                </option>	
+            </select>
+        </div>
     </div>
-
     <div class="form-group row perfil" style="margin-bottom: 0%;">
         <div class="col-sm-6 colajustes izquierda">
             <a th:href="@{/admin/cursos/}" class="btn btninvertido btnajustes">Regresar</a>

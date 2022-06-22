@@ -37,8 +37,8 @@ public class EstudianteServiceImpl implements IEstudianteService {
 	
 	@Override
 	@Transactional
-	public boolean registrar(Estudiante docente) {
-		Estudiante objEstudiante = dEstudiante.save(docente);
+	public boolean registrar(Estudiante estudiante) {
+		Estudiante objEstudiante = dEstudiante.save(estudiante);
 		return objEstudiante!=null;
 	}
 	

@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,18 +28,23 @@ public class Docente implements Serializable{
 	@Column(name="correoeduDocente",length=50,nullable=false)
 	private String correoedu;
 
-	@Column(name="correoperDocente",length=50,nullable=true)
+	@Column(name="correoperDocente",length=50,nullable=false)
 	private String correoper;
 
 	@Column(name="telefonoDocente",length=9,nullable=false)
 	private String telefono;
+
+	@ManyToOne
+	@JoinColumn(name="ingresoDocente",nullable=false)
+	private Semestre ingreso;
+	
 
 	public Docente() {
 		super();
 	}
 
 	public Docente(String codigo, String nombres, String apellidos, String correoedu, String correoper,
-			String telefono) {
+			String telefono, Semestre ingreso) {
 		super();
 		this.codigo = codigo;
 		this.nombres = nombres;
@@ -45,6 +52,7 @@ public class Docente implements Serializable{
 		this.correoedu = correoedu;
 		this.correoper = correoper;
 		this.telefono = telefono;
+		this.ingreso = ingreso;
 	}
 
 	public String getCodigo() {
@@ -93,5 +101,13 @@ public class Docente implements Serializable{
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	
+	public Semestre getIngreso() {
+		return ingreso;
+	}
+
+	public void setIngreso(Semestre ingreso) {
+		this.ingreso = ingreso;
 	}
 }
