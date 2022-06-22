@@ -1,9 +1,7 @@
 package pe.edu.upc.spring.controller;
 
 import org.apache.el.parser.ParseException;
-import org.apache.commons.lang3.text.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,8 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import pe.edu.upc.spring.model.Seccion;
-import pe.edu.upc.spring.model.Curso;
-import pe.edu.upc.spring.model.Docente;
 import pe.edu.upc.spring.service.ISeccionService;
 import pe.edu.upc.spring.service.ICursoService;
 import pe.edu.upc.spring.service.IDocenteService;
@@ -41,22 +37,18 @@ public class SeccionController {
         model.addAttribute("btn", "Registrar");
         return "seccion";
     }
-    @SuppressWarnings("deprecation")
     @RequestMapping("/registrar")
     public String registrar(@ModelAttribute Seccion objSeccion, BindingResult binRes, Model model, RedirectAttributes objRedir) throws ParseException{
         if(binRes.hasErrors()) model.addAttribute("mensaje", "Ocurrio un error");
         else {
-            Seccion objs = sService.buscarId(objSeccion.getCodigo());
-            objSeccion.setCodigo(WordUtils.capitalizeFully(objSeccion.getCodigo()));
-            objSeccion.setCurso(WordUtils.capitalizeFully(objSeccion.getCurso().getNombre()));
-            objSeccion.setDocente(WordUtils.capitalizeFully(objSeccion.getDocente().getNombre()));
+            objSeccion.setCodigo(objSeccion.getCodigo());
             model.addAttribute("titulo", "Registrar seccion");
             model.addAttribute("btn", "Registrar");
         }
         return "seccion";
     }
     @RequestMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, Model model, RedirectAttributes objRedir)
+    public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
     {
         Seccion objSeccion = sService.buscarId(id);
         if (objSeccion == null) {
@@ -73,7 +65,7 @@ public class SeccionController {
         }
     }
     @RequestMapping("/eliminar")
-    public String eliminar(@RequestParam(value="id") String id, RedirectAttributes objRedir) {
+    public String eliminar(@RequestParam(value="id") Integer id, RedirectAttributes objRedir) {
         try {
             if (id!=null) {
                 sService.eliminar(id);
