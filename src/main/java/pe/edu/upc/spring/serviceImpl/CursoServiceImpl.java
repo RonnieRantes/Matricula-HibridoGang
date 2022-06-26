@@ -26,13 +26,13 @@ public class CursoServiceImpl implements ICursoService {
 
     @Override
     @Transactional
-    public void eliminar(int idCurso) {
+    public void eliminar(String idCurso) {
         dCurso.deleteById(idCurso);
     }
 
     @Override
     @Transactional(readOnly=true)
-    public Curso buscarId(int idCurso) {
+    public Curso buscarId(String idCurso) {
         Optional<Curso> opt = dCurso.findById(idCurso);
         if(opt.isPresent()) {
             Curso objCurso = opt.get();

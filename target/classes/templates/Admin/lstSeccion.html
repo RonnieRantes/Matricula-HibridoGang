@@ -41,8 +41,8 @@
             <tbody>
             <tr th:each="seccion: ${listaSecciones}">
                 <td class="text-center celda"><a th:href="@{'/seccion/modificar/'}+${seccion.codigo}" th:text="${seccion.codigo}"></a></td>
-                <td class="text-center celda" th:text="${seccion.curso}"></td>
-                <td class="text-center celda" th:text="${seccion.docente}"></td>
+                <td class="text-center celda" th:text="${seccion.curso.codigo} + ' - ' + ${seccion.curso.nombre}"></td>
+                <td class="text-center celda" th:text="${seccion.docente.nombres} + ' ' + ${seccion.docente.apellidos}"></td>
                 <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/seccion/eliminar/?id=}+${seccion.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
             </tr>
             </tbody>

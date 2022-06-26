@@ -19,14 +19,14 @@
             <h3>Código:</h3>
         </div>
         <div class="col-sm-6 colinput">
-            <input class="form-control text-center" type="text" th:field="*{codigo}" maxlength="50"/>
+            <input class="form-control text-center" type="text" th:field="*{codigo}" maxlength="10" autofocus required/>
         </div>
     </div><div class="perfil">
         <div class="col-sm-6 coltexto">
             <h3>Nombre:</h3>
         </div>
         <div class="col-sm-6 colinput">
-            <input class="form-control text-center" type="text" th:field="*{nombres}" maxlength="50" autofocus required />
+            <input class="form-control text-center" type="text" th:field="*{nombre}" maxlength="50" required />
         </div>
     </div>
     <div class="perfil">
@@ -34,9 +34,9 @@
             <h3>Obligatorio:</h3>
         </div>
         <div class="col-sm-6 colinput">
-            <select class="form-control text-center">
-                <option value="ObSi">Si</option>
-                <option value="ObNo">No</option>
+            <select class="form-control text-center" th:field="*{obligatorio}">
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
             </select>
         </div>
     </div>

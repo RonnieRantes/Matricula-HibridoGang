@@ -9,7 +9,7 @@
     </head>
     <body>
     	<div th:replace="fragments/navbar :: nav"></div>
-        <div class="container cont1" style="margin-top: 1%;">
+        <div class="container cont1" style="margin-top: -1.4%;">
             <div class="row center">
                 <div class="form-group row">
                     <h1 style="margin-bottom: 3%;">¿Qué acción deseas realizar?</h1>
@@ -33,9 +33,9 @@
                     </div>
                     <div class="col-sm-6 coladmin">
                         <a th:href="@{/admin/docentes/}">
-                        <button type="submit" class="btn btn-primary circuloadmin">
-                            <img class="imgcirculoadmin" src="/img/docentes.png" >
-                        </button>
+                            <button type="submit" class="btn btn-primary circuloadmin">
+                                <img class="imgcirculoadmin" src="/img/docentes.png" >
+                            </button>
                         </a>
                         <h3 class="txtcirculos">Docentes</h3>        
                     </div>
@@ -50,22 +50,26 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6 coladmin">
-                        <button type="submit" class="btn btn-primary circuloadmin">
-                            <img class="imgcirculoadmin" src="/img/horarios.png" style="margin-left: 10%;" >
-                        </button>  
-                        <h3 class="txtcirculos">Horarios</h3>        
+                        <a th:href="@{/admin/horarios/}">
+	                        <button type="submit" class="btn btn-primary circuloadmin">
+	                            <img class="imgcirculoadmin" src="/img/horarios.png" style="margin-left: 10%;" >
+	                        </button>  
+                    	</a>
+	                    <h3 class="txtcirculos">Horarios</h3>        
                     </div>
                     <div class="col-sm-6 coladmin">
-                        <button type="submit" class="btn btn-primary circuloadmin">
-                            <img class="imgcirculoadmin" src="/img/matriculas.png" style="margin-left: 10%;">
-                        </button>         
+                        <a th:href="@{/admin/matriculas/}">
+	                        <button type="submit" class="btn btn-primary circuloadmin">
+	                            <img class="imgcirculoadmin" src="/img/matriculas.png" style="margin-left: 10%;">
+	                        </button>    
+                        </a>     
                         <h3 class="txtcirculos">Matrículas</h3>        
                     </div>
                     <div class="col-sm-6 coladmin">
                         <a th:href="@{/admin/secciones/}">
-                        <button type="submit" class="btn btn-primary circuloadmin">
-                            <img class="imgcirculoadmin" src="/img/secciones.png" >
-                        </button>
+                            <button type="submit" class="btn btn-primary circuloadmin">
+                                <img class="imgcirculoadmin" src="/img/secciones.png" >
+                            </button>
                         </a>
                         <h3 class="txtcirculos">Secciones</h3>        
                     </div>
