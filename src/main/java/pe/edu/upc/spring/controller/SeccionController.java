@@ -19,7 +19,6 @@ import pe.edu.upc.spring.service.IDocenteService;
 
 @Controller
 @RequestMapping("/seccion")
-
 public class SeccionController {
     @Autowired
     private ISeccionService sService;

@@ -31,7 +31,7 @@
                 <option th:each="c: ${listaCursos}"
                         th:value="${c.idCurso}"
                         th:text="${c.nombre}"
-                        th:selected="(${c.idCurso} == *{carrera.idCurso})">
+                        th:selected="(${c.idCurso} == *{curso.idCurso})">
                 </option>
             </select>
         </div>
@@ -44,7 +44,7 @@
             <select class="form-control text-center" th:field="*{docente.idDocente}">
                 <option th:each="d: ${listaDocentes}"
                         th:value="${d.idDocente}"
-                        th:text="${d.nombre}"
+                        th:text="${d.nombres} + ' ' + ${d.apellidos}"
                         th:selected="(${d.idDocente} == *{docente.idDocente})">
                 </option>
             </select>
