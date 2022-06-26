@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.spring.model.Docente;
-import pe.edu.upc.spring.model.Semestre;
 import pe.edu.upc.spring.model.Usuario;
 import pe.edu.upc.spring.service.IDocenteService;
 import pe.edu.upc.spring.service.IRolService;
-import pe.edu.upc.spring.service.ISemestreService;
 import pe.edu.upc.spring.service.IUsuarioService;
 
 @Controller
@@ -30,8 +28,6 @@ public class DocenteController {
     @Autowired
     private IRolService rService;
     @Autowired
-    private ISemestreService sService;
-    @Autowired
     private IUsuarioService uService;
     @Autowired
     private PasswordEncoder encoder;
@@ -41,7 +37,7 @@ public class DocenteController {
         model.addAttribute("docente", new Docente());
         model.addAttribute("titulo", "Registrar docente");
         model.addAttribute("btn", "Registrar");
-        return "docente";
+        return "Entidad/docente";
     }
     @SuppressWarnings("deprecation")
     @RequestMapping("/registrar")
@@ -53,13 +49,11 @@ public class DocenteController {
             objDocente.setNombres(WordUtils.capitalizeFully(objDocente.getNombres()));
             objDocente.setApellidos(WordUtils.capitalizeFully(objDocente.getApellidos()));
             objDocente.setCorreoper(WordUtils.capitalizeFully(objDocente.getCorreoper()));
-            objDocente.setTelefono(objDocente.getTelefono());
             model.addAttribute("titulo", "Registrar docente");
             model.addAttribute("btn", "Registrar");
             //REGISTRAR
             if(objD == null) {                
-				Semestre objS = sService.buscarId(objDocente.getIngreso().getIdSemestre());
-                objDocente.setCodigo(dService.Codigo(objS.getAnio(), objS.getPeriodo()));
+                objDocente.setCodigo("P" + objDocente.getNombres().substring(0,3) + objDocente.getApellidos().substring(0,3));
                 objDocente.setCorreoedu(objDocente.getCodigo() + "@upc.edu.pe");
                 flag = dService.registrar(objDocente);
                 if (flag) {
@@ -67,6 +61,7 @@ public class DocenteController {
                     Usuario objUsuario = new Usuario(objDocente.getCodigo(), rService.buscarId(3), encoder.encode(contrasenia), true);
                     flag = uService.registrar(objUsuario);
                     if(flag) return "redirect:/admin/docentes/";
+            		else model.addAttribute("mensaje", "Ocurrio un error");
                 }
                 model.addAttribute("mensaje", "Ocurrio un error");
             }
@@ -76,10 +71,11 @@ public class DocenteController {
                 objDocente.setCorreoedu(objD.getCorreoedu());
                 flag = dService.registrar(objDocente);
                 if(flag) return "redirect:/admin/docentes/";
+        		else model.addAttribute("mensaje", "Ocurrio un error");
                 model.addAttribute("mensaje", "Ocurrio un error");
             }
         }
-        return "docente";
+        return "Entidad/docente";
     }
     @RequestMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, Model model, RedirectAttributes objRedir)
@@ -93,7 +89,7 @@ public class DocenteController {
             model.addAttribute("titulo", "Modificar docente");
             model.addAttribute("btn", "Actualizar");
             model.addAttribute("docente", objDocente);
-            return "docente";
+            return "Entidad/docente";
         }
     }
     @RequestMapping("/eliminar")
