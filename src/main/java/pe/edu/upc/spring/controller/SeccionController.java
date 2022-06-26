@@ -41,7 +41,7 @@ public class SeccionController {
     public String registrar(@ModelAttribute Seccion objSeccion, BindingResult binRes, Model model, RedirectAttributes objRedir) throws ParseException{
         if(binRes.hasErrors()) model.addAttribute("mensaje", "Ocurrio un error");
         else {
-            model.addAttribute("titulo", "Registrar sección");
+            model.addAttribute("titulo", "Registrar seccion");
             model.addAttribute("btn", "Registrar");
 			boolean flag = sService.registrar(objCurso);
             if (flag) return "redirect:/admin/secciones/";
