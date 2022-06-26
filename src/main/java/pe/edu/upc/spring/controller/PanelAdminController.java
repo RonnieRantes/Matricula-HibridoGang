@@ -55,7 +55,7 @@ public class PanelAdminController {
 	@RequestMapping("/secciones/")
 	public String irPaginaSecciones(Model model) {
 		model.addAttribute("listaSecciones", seService.listar());
-		return "Admin/lstSeccione";
+		return "Admin/lstSeccion";
 	}
 
 	@RequestMapping("/docentes/")
