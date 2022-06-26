@@ -43,7 +43,7 @@ public class SeccionController {
         else {
             model.addAttribute("titulo", "Registrar seccion");
             model.addAttribute("btn", "Registrar");
-			boolean flag = sService.registrar(objCurso);
+			boolean flag = sService.registrar(objSeccion);
             if (flag) return "redirect:/admin/secciones/";
 			else model.addAttribute("mensaje", "Ocurrio un error");
 
