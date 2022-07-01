@@ -25,7 +25,7 @@ public class CarreraController {
 		model.addAttribute("carrera", new Carrera());
 		model.addAttribute("btn", "Registrar");
 		model.addAttribute("titulo", "NUEVA CARRRERA");
-		return "/Entidad/carrera";
+		return "Entidad/carrera";
 	}
 	@RequestMapping("/registrar")
 	public String registrar(@ModelAttribute Carrera objCarrera, BindingResult binRes, Model model, RedirectAttributes objRedir) throws ParseException{
@@ -36,7 +36,7 @@ public class CarreraController {
 			if (flag) return "redirect:/admin/carreras/";
 			else model.addAttribute("mensaje", "Ocurrio un error");
 		}
-		return "/Entidad/carrera";
+		return "Entidad/carrera";
 	}
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
@@ -50,7 +50,7 @@ public class CarreraController {
 			model.addAttribute("titulo", "Modificar carrera");
 			model.addAttribute("carrera", objCarrera);
 			model.addAttribute("btn", "Actualizar");
-			return "/Entidad/carrera";
+			return "Entidad/carrera";
 		}
 	}
 	@RequestMapping("/eliminar")
