@@ -80,7 +80,6 @@ public class PanelEstudiante {
             		s.setVacantes(mService.vacantesSeccion(s.getCodigo(), semestre));
             		s.setHorario("Lunes - Viernes");
             		s.setMatriculado(mService.comprobarSeccion(s.getCodigo(), semestre, logeado.getName(), idCurso));
-					System.out.println("COMPRO MAT: " + s.getMatriculado());
             	}
             	model.addAttribute("listaSecciones", lst);
         		model.addAttribute("matricula", objM);
