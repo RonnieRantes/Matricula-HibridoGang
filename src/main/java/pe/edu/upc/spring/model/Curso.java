@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Curso")
@@ -25,6 +26,9 @@ public class Curso implements Serializable{
 
     @Column(name="obligatorioCurso",length=4,nullable=false)
     private String obligatorio;
+    
+    @Transient
+    private boolean matriculado;
 
     public Curso() {
         super();
@@ -69,6 +73,12 @@ public class Curso implements Serializable{
 	public void setObligatorio(String obligatorio) {
 		this.obligatorio = obligatorio;
 	}
-	
-	
+
+	public boolean isMatriculado() {
+		return matriculado;
+	}
+
+	public void setMatriculado(boolean matriculado) {
+		this.matriculado = matriculado;
+	}
 }

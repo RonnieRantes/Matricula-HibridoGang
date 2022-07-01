@@ -9,4 +9,5 @@ public interface ISeccionService {
     public void eliminar(String idSeccion);
     public Seccion buscarId(String idSeccion);
     public List<Seccion> listar();
+    public List<Seccion> listarSeccionesCurso(String codigoCurso);
 }

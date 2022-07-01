@@ -41,14 +41,13 @@
 							</tr>
 						</thead>
 						<tbody>
-				            <tr th:each="docente: ${listaDocentes}">
-				                <td class="text-center celda"><a th:href="@{'/docente/modificar/'}+${docente.codigo}" th:text="${docente.codigo}"></a></td>
-				                <td class="text-center celda" th:text="${docente.nombres}"></td>
-				                <td class="text-center celda" th:text="${docente.apellidos}"></td>
-				                <td class="text-center celda" th:text="${docente.correoedu}"></td>
-				                <td class="text-center celda" th:text="${docente.correoper}"></td>
-				                <td class="text-center celda" th:text="${docente.telefono}"></td>
-				                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/docente/eliminar/?id=}+${docente.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+				            <tr th:each="malla: ${listaHabiles}">
+				                <td class="text-center celda" th:text="${malla.ciclo}"></td>
+				                <td class="text-center celda" th:text="${malla.curso.codigo}"></td>
+				           		<td th:if="${malla.matriculado}" class="text-center celda" th:text="${malla.curso.nombre}"></td>
+				           		<td th:unless="${malla.matriculado}" class="text-center celda"><a th:href="@{/uEstudiante/matricula/} + ${malla.curso.codigo} + @{/secciones}" th:text="${malla.curso.nombre}"></a></td>
+				                <td class="text-center celda" th:text="${malla.curso.creditos}"></td>
+				                <td class="text-center celda" th:text="${malla.curso.obligatorio}"></td>
 				            </tr>
 					</tbody>
 				</table> 	
@@ -60,7 +59,7 @@
 							</div>
 							<div class="col-sm-6 coltxt2">
 								<div class="txt4">
-									<div class="txt5"><h6>Créditos actuales: 25</h6></div>
+									<div class="txt5"><h6 th:text="'Créditos actuales: ' + ${creditos}"></h6></div>
 									<div class="txt5"><h6>Máximo de créditos: 27</h6></div>
 									<div class="txt5"><h6>Semestre actual: 2019-2</h6></div>
 								</div>
@@ -69,7 +68,7 @@
 						<table class="table table-hover table-striped">
 							<thead>
 								<tr>
-									<th class="text-center">CICLO</th>
+									<th class="text-center">CODIGO</th>
 									<th class="text-center">ASIGNATURA</th>
 									<th class="text-center">SECCIÓN</th>
 									<th class="text-center">VACANTES</th>
@@ -79,15 +78,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="imagen: ${listaImagenes}">
-									<td class="text-center celda">5</td>
-									<td class="text-center celda">Física I</td>
-									<td class="text-center celda">SV62</td>
-									<td class="text-center celda">5/10</td>
-									<td class="text-center celda">4</td>
-									<td class="text-center celda">SÍ</td>
-									<td class="text-center celda" style="font-size: 15px;"><a><span class="glyphicon glyphicon-remove-circle"></span></a></td>
-								</tr>
+					            <tr th:each="matricula: ${listaMatriculados}">
+					                <td class="text-center celda" th:text="${matricula.seccion.curso.codigo}"></td>
+					           		<td class="text-center celda"><a <a th:href="@{/uEstudiante/matricula/} + ${matricula.seccion.curso.codigo} + @{/secciones}" th:text="${matricula.seccion.curso.nombre}"></a></td>					                
+					                <td class="text-center celda" th:text="${matricula.seccion.codigo}"></td>
+					                <td class="text-center celda" th:text="${matricula.seccion.vacantes}"></td>
+					                <td class="text-center celda" th:text="${matricula.seccion.curso.creditos}"></td>
+					                <td class="text-center celda" th:text="${matricula.seccion.curso.obligatorio}"></td>
+					                <td class="text-center celda" th:text="${matricula.seccion.curso.obligatorio}"></td>
+					            </tr>
 							</tbody>
 						</table> 	
 					</div>

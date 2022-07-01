@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Seccion")
@@ -26,6 +27,15 @@ public class Seccion implements Serializable{
     @ManyToOne
 	@JoinColumn(name="DocenteSeccion",nullable=true)
     private Docente docente;
+    
+    @Transient
+    private int vacantes;
+    
+    @Transient
+    private String horario;
+    
+    @Transient
+    private boolean matriculado;
 
     public Seccion() {
         super();
@@ -62,4 +72,27 @@ public class Seccion implements Serializable{
         this.docente = docente;
     }
 
+	public int getVacantes() {
+		return vacantes;
+	}
+
+	public void setVacantes(int vacantes) {
+		this.vacantes = vacantes;
+	}
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+
+	public boolean isMatriculado() {
+		return matriculado;
+	}
+
+	public void setMatriculado(boolean matriculado) {
+		this.matriculado = matriculado;
+	}
 }

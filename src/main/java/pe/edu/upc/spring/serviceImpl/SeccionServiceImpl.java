@@ -46,4 +46,10 @@ public class SeccionServiceImpl implements ISeccionService {
     public List<Seccion> listar() {
         return dSeccion.findAll();
     }
+    
+    @Override
+    @Transactional(readOnly=true)
+    public List<Seccion> listarSeccionesCurso(String codigoCurso) {
+        return dSeccion.SeccionesCurso(codigoCurso);
+    }
 }

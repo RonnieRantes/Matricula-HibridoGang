@@ -57,7 +57,7 @@ public class DocenteController {
                 objDocente.setCorreoedu(objDocente.getCodigo() + "@upc.edu.pe");
                 flag = dService.registrar(objDocente);
                 if (flag) {
-                    String contrasenia = objDocente.getApellidos().substring(0,1) + objDocente.getNombres().substring(0,1) + objDocente.getCodigo().substring(1);
+                    String contrasenia = objDocente.getApellidos().substring(0,1) + objDocente.getNombres().substring(0,1) + objDocente.getCodigo();
                     Usuario objUsuario = new Usuario(objDocente.getCodigo(), rService.buscarId(3), encoder.encode(contrasenia), true);
                     flag = uService.registrar(objUsuario);
                     if(flag) return "redirect:/admin/docentes/";

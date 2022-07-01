@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="CursoCarrera")
@@ -31,6 +32,9 @@ public class CursoCarrera implements Serializable{
 
 	@Column(name="ciclo",nullable=false)
 	private int ciclo;
+	
+    @Transient
+    private boolean matriculado;
 
 	public CursoCarrera() {
 		super();
@@ -75,4 +79,14 @@ public class CursoCarrera implements Serializable{
 	public void setCiclo(int ciclo) {
 		this.ciclo = ciclo;
 	}
+
+	public boolean isMatriculado() {
+		return matriculado;
+	}
+
+	public void setMatriculado(boolean matriculado) {
+		this.matriculado = matriculado;
+	}
+	
+	
 }
