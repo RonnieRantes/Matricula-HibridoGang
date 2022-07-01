@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1">   
+        <link href="http://fonts.cdnfonts.com/css/lexend-deca" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <link href="/css/general.css" rel="stylesheet" id="general-css"></link>
+		<link href="/css/cursosh.css" rel="stylesheet" id="general-css"></link>
+	    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" >
+		<script src="/js/jquery.validate.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.dataTables.min.js"></script>
+		<script src="/js/dataTables.bootstrap4.min.js"></script>
+    </head>
+    <body>
+		<div th:replace="fragments/navbar :: nav"></div>
+        <div class="container cont1">
+				<div class="form-group row titulo" style="margin-bottom: 1.5%;">
+					<div class="col-sm-6 coltboton">
+						<button type="submit" class="btn btninvertido btnvolver">Volver</button>  
+					</div>
+					<div class="col-sm-6 colttexto">
+						<h1>Matrícula en línea</h1>
+					</div>
+				</div>
+				<div class="perfil">
+					<div class="col-sm-6 rect1">
+						<div class="col-sm-6 coltxt">
+							<h2>Cursos hábiles</h2>
+						</div>
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th class="text-center">CICLO</th>
+								<th class="text-center">CÓDIGO</th>
+								<th class="text-center">ASIGNATURA</th>
+								<th class="text-center">CRÉDITOS</th>
+								<th class="text-center">OBLIG.?</th>
+							</tr>
+						</thead>
+						<tbody>
+				            <tr th:each="docente: ${listaDocentes}">
+				                <td class="text-center celda"><a th:href="@{'/docente/modificar/'}+${docente.codigo}" th:text="${docente.codigo}"></a></td>
+				                <td class="text-center celda" th:text="${docente.nombres}"></td>
+				                <td class="text-center celda" th:text="${docente.apellidos}"></td>
+				                <td class="text-center celda" th:text="${docente.correoedu}"></td>
+				                <td class="text-center celda" th:text="${docente.correoper}"></td>
+				                <td class="text-center celda" th:text="${docente.telefono}"></td>
+				                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/docente/eliminar/?id=}+${docente.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+				            </tr>
+					</tbody>
+				</table> 	
+					</div>
+					<div class="col-sm-6 rect1" style="margin-left: 4%;">
+						<div>
+							<div class="col-sm-6 coltxt">
+								<h2>Cursos matriculados</h2>
+							</div>
+							<div class="col-sm-6 coltxt2">
+								<div class="txt4">
+									<div class="txt5"><h6>Créditos actuales: 25</h6></div>
+									<div class="txt5"><h6>Máximo de créditos: 27</h6></div>
+									<div class="txt5"><h6>Semestre actual: 2019-2</h6></div>
+								</div>
+							</div>
+						</div>
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th class="text-center">CICLO</th>
+									<th class="text-center">ASIGNATURA</th>
+									<th class="text-center">SECCIÓN</th>
+									<th class="text-center">VACANTES</th>
+									<th class="text-center">CRÉDITOS</th>
+									<th class="text-center">OBLIG.?</th>
+									<th class="text-center">-</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="imagen: ${listaImagenes}">
+									<td class="text-center celda">5</td>
+									<td class="text-center celda">Física I</td>
+									<td class="text-center celda">SV62</td>
+									<td class="text-center celda">5/10</td>
+									<td class="text-center celda">4</td>
+									<td class="text-center celda">SÍ</td>
+									<td class="text-center celda" style="font-size: 15px;"><a><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+								</tr>
+							</tbody>
+						</table> 	
+					</div>
+				</div>
+        </div>
+    	<div th:replace="fragments/footer :: footer"></div>
+		<script>$('table').DataTable({ info: false, searching: false, lengthChange: false, pageLength: 10, dom: 't' });</script>	
+    </body>
+</html>

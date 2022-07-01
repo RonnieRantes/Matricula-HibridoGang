@@ -34,6 +34,7 @@
             <tr>
                 <th class="text-center">CÓDIGO</th>
                 <th class="text-center">NOMBRES</th>
+                <th class="text-center">CRÉDITOS</th>
                 <th class="text-center">OBLIGATORIO</th>
                 <th class="text-center"></th>
             </tr>
@@ -42,6 +43,7 @@
             <tr th:each="curso: ${listaCursos}">
                 <td class="text-center celda"><a th:href="@{'/curso/modificar/'}+${curso.codigo}" th:text="${curso.codigo}"></a></td>
                 <td class="text-center celda" th:text="${curso.nombre}"></td>
+                <td class="text-center celda" th:text="${curso.creditos}"></td>
                 <td class="text-center celda" th:text="${curso.obligatorio}"></td>
                 <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/curso/eliminar/?id=}+${curso.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
             </tr>

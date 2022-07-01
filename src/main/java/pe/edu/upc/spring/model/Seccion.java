@@ -20,11 +20,11 @@ public class Seccion implements Serializable{
     private String codigo;
 
     @ManyToOne
-	@JoinColumn(name="CursoSeccion",nullable=false)
+	@JoinColumn(name="CursoSeccion",nullable=true)
     private Curso curso;
 
     @ManyToOne
-	@JoinColumn(name="DocenteSeccion",nullable=false)
+	@JoinColumn(name="DocenteSeccion",nullable=true)
     private Docente docente;
 
     public Seccion() {

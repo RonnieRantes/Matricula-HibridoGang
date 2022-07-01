@@ -27,11 +27,11 @@
             <h3>Curso:</h3>
         </div>
         <div class="col-sm-6 colinput">
-            <select class="form-control text-center" th:field="*{curso.idCurso}">
+            <select class="form-control text-center" th:field="*{curso.codigo}">
                 <option th:each="c: ${listaCursos}"
-                        th:value="${c.idCurso}"
+                        th:value="${c.codigo}"
                         th:text="${c.nombre}"
-                        th:selected="(${c.idCurso} == *{carrera.idCurso})">
+                        th:selected="(${c.codigo} == *{curso.codigo})">
                 </option>
             </select>
         </div>
@@ -41,11 +41,11 @@
             <h3>Docente:</h3>
         </div>
         <div class="col-sm-6 colinput">
-            <select class="form-control text-center" th:field="*{docente.idDocente}">
+            <select class="form-control text-center" th:field="*{docente.codigo}">
                 <option th:each="d: ${listaDocentes}"
-                        th:value="${d.idDocente}"
-                        th:text="${d.nombre}"
-                        th:selected="(${d.idDocente} == *{docente.idDocente})">
+                        th:value="${d.codigo}"
+                        th:text="${d.nombres} + ' ' + ${d.apellidos}"
+                        th:selected="(${d.codigo} == *{docente.codigo})">
                 </option>
             </select>
         </div>

@@ -44,7 +44,7 @@
 
                     <td class="text-center celda"><a th:href="@{'/carrera/modificar/'}+${carrera.idCarrera}" th:text="${carrera.idCarrera}"></a></td>
                     <td class="text-center celda" th:text="${carrera.nombre}"></td>
-					<td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/carrera/eliminar/?id=}+${carrera.idCarrera}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+					<td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/admin/carreras/}+${carrera.idCarrera}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                     <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/carrera/eliminar/?id=}+${carrera.idCarrera}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 
                 </tr>

@@ -19,6 +19,9 @@ public class Curso implements Serializable{
 
     @Column(name="nombreCurso",length=50,nullable=false)
     private String nombre;
+    
+    @Column(name="creditosCurso",nullable=false)
+    private int creditos;
 
     @Column(name="obligatorioCurso",length=4,nullable=false)
     private String obligatorio;
@@ -27,35 +30,45 @@ public class Curso implements Serializable{
         super();
     }
 
-    public Curso(String codigo, String nombre, String obligatorio) {
-        super();
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.obligatorio = obligatorio;
-    }
+	public Curso(String codigo, String nombre, int creditos, String obligatorio) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.creditos = creditos;
+		this.obligatorio = obligatorio;
+	}
 
-    public String getCodigo() {
-        return codigo;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getObligatorio() {
-        return obligatorio;
-    }
+	public int getCreditos() {
+		return creditos;
+	}
 
-    public void setObligatorio(String obligatorio) {
-        this.obligatorio = obligatorio;
-    }
+	public void setCreditos(int creditos) {
+		this.creditos = creditos;
+	}
 
+	public String getObligatorio() {
+		return obligatorio;
+	}
+
+	public void setObligatorio(String obligatorio) {
+		this.obligatorio = obligatorio;
+	}
+	
+	
 }

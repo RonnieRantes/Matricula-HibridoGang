@@ -24,7 +24,7 @@ public class CarreraController {
 	public String irPaginaEntidad(Model model) {
 		model.addAttribute("carrera", new Carrera());
 		model.addAttribute("btn", "Registrar");
-		model.addAttribute("titulo", "REGISTRAR CARRRERA");
+		model.addAttribute("titulo", "NUEVA CARRRERA");
 		return "/Entidad/carrera";
 	}
 	@RequestMapping("/registrar")

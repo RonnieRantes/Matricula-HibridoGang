@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1">   
+        <link href="http://fonts.cdnfonts.com/css/lexend-deca" rel="stylesheet">
+        <link href="bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <link href="general.css" rel="stylesheet" id="general-css"></link>
+		<link href="consultaseccion.css" rel="stylesheet" id="general-css"></link>
+		<link href="dataTables.bootstrap4.min.css" rel="stylesheet"></link>
+		<script src="jquery.validate.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<script src="jquery.min.js"></script>
+		<script src="jquery.dataTables.min.js"></script>
+		<script src="dataTables.bootstrap4.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse" style="background-color: #ffffff; border-width: 0px;border-radius: 0px; width: 100%;">
+            <div class="container" style="height: 60px; padding:0%; ">
+                <div id="navbar" class="collapse navbar-collapse" style="padding:0%; ">
+                    <div class="navbar-header">
+                        <a><img src="bx_user-circle.png" width="50" height="50" style="margin-top: 5px;"></img></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a
+                            style="color: #4E6D79; font-size: 20pt; font-weight: bold; margin-top: 5px"
+                            th:href="@{/inicio/}">Nombre Nombre2 Apellido Apellido2</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-right">
+                        <a th:href="@{/login/?logout}"><img src="bx_exit.png" width="50" height="50" style="margin-top: 5px;"></img></a>
+                    </div>
+                </div> 
+            </div>
+            <div class="container" style="height: 5px; background-color: #4E6D79; margin:0%; padding:0%; width: 100%;"></div>
+        </nav>
+
+        <div class="container cont1">
+				<div class="form-group row titulo" style="margin-bottom: 1.5%;">
+					<div class="col-sm-6 coltboton">
+						<button type="submit" class="btn btninvertido">Volver</button>  
+					</div>
+					<div class="col-sm-6 colttexto">
+						<h1>Secciones del semestre</h1>
+					</div>
+				</div>
+				<div class="perfil">
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th class="text-center">CÓDIGO</th>
+								<th class="text-center">ASIGNATURA</th>
+								<th class="text-center">SECCIÓN</th>
+								<th class="text-center">VACANTES</th>
+								<th class="text-center">HORARIO</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="imagen: ${listaImagenes}">
+								<td class="text-center celda">Física I</td>
+								<td class="text-center celda">Física I</td>
+								<td class="text-center celda">SV62</td>
+								<td class="text-center celda">5/10</td>
+								<td class="text-center celda">SÍ</td>
+							</tr>
+							<tr th:each="imagen: ${listaImagenes}">
+								<td class="text-center celda">Física I</td>
+								<td class="text-center celda">Física I</td>
+								<td class="text-center celda">SV62</td>
+								<td class="text-center celda">5/10</td>
+								<td class="text-center celda">SÍ</td>
+							</tr>
+						</tbody>
+					</table> 	
+					<h4 th:text="${mensaje}" class="error"></h4>
+				</div>
+        </div>
+		<footer class="footer">
+			<div class="container-footer-all">
+				<img src="foot.png" style="position: absolute; width: 100%; height: 15%; bottom: 0;"></img>
+			</div>
+		</footer>
+    	<div th:replace="fragments/footer :: footer"></div>
+		<script>$('table').DataTable({ info: false, searching: false, lengthChange: false, pageLength: 10, dom: 't' });</script>	
+    </body>
+</html>
