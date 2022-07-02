@@ -10,7 +10,7 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: nav"></div>
-<form class="container cont1" th:action="@{/seccion/registrar}" method="post" th:object="${horario}">
+<form class="container cont1" th:action="@{/horario/registrar}" method="post" th:object="${horario}">
     <div class="form-group row perfil" style="margin-bottom: 1.5%;">
         <h1 th:text="${titulo}"></h1>
     </div>
@@ -70,7 +70,7 @@
     
     <div class="form-group row perfil" style="margin-bottom: 0%;">
         <div class="col-sm-6 colajustes izquierda">
-            <a th:href="@{/admin/secciones/}" class="btn btninvertido btnajustes">Regresar</a>
+            <a th:href="@{/admin/horarios/}" class="btn btninvertido btnajustes">Regresar</a>
         </div>
         <div class="col-sm-6 colajustes derecha">
             <button type="submit" class="btn btn-primary btnajustes" th:text="${btn}"></button>
