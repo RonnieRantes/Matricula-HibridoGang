@@ -22,4 +22,8 @@ public interface IMatriculaRepository extends JpaRepository<Matricula, Integer>{
 		
 	@Query("from Matricula m where m.semestre.idSemestre = :idSemestre")
 	List<Matricula> MatriculaSemestre(@Param("idSemestre") int idSemestre); //findAll
+	
+		@Query("from Matricula m where m.estudiante.codigo = :codigoE and m.seccion.codigo = :codigoS")
+	List<Matricula> MatriculaEstudianteSeccion(@Param("codigoE") String codigoEstudiante, @Param("codigoS") String codigoSeccion); //findAll
+
 }

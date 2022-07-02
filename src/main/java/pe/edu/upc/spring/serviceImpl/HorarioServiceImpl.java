@@ -2,6 +2,7 @@ package pe.edu.upc.spring.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,11 +12,18 @@ import pe.edu.upc.spring.model.Horario;
 import pe.edu.upc.spring.repository.IHorarioRepository;
 import pe.edu.upc.spring.service.IHorarioService;
 
+import pe.edu.upc.spring.model.Matricula;
+import pe.edu.upc.spring.repository.IMatriculaRepository;
+import pe.edu.upc.spring.service.IMatriculaService;
+
 @Service
 public class HorarioServiceImpl implements IHorarioService {
 
 	@Autowired
 	private IHorarioRepository dHorario;
+	@Autowired
+    private IMatriculaRepository dMatricula;
+
 
 	@Override
 	@Transactional
@@ -46,6 +54,26 @@ public class HorarioServiceImpl implements IHorarioService {
 	public List<Horario> listar() {
 		return dHorario.findAll();
 	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Horario> horariosEstudiante(String codigoEstudiante) {
+		List<Horario> lst = new ArrayList<Horario>();
+		for(Horario h : dHorario.findAll()){
+			if(dMatricula.MatriculaEstudianteSeccion(codigoEstudiante, h.getSeccion().getCodigo()).size() > 0){
+				lst.add(h);
+			}
+		}
+		
+		return lst;
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Horario> horariosDocente() {
+		return dHorario.findAll();
+	}
+
 	
 	@Override
 	@Transactional(readOnly=true)
