@@ -19,30 +19,31 @@
     	<div class="container cont1">
 				<div class="form-group row titulo" style="margin-bottom: 1.5%;">
 					<div class="col-sm-6 coltboton">
-						<a th:href="@{/inicio/}" type="submit" class="btn btninvertido">Regresar</a>  
+						<a th:href="@{/uDocente/secciones/}" type="submit" class="btn btninvertido">Regresar</a>  
 					</div>
 					<div class="col-sm-6 colttexto">
-						<h1>Secciones</h1>
+						<h1>Alumnos</h1>
 					</div>
 				</div>
 				<div class="perfil">
+					<div>
+						<h3 th:text="${asignatura}"></h3>
+					</div>
 					<table class="table table-hover table-striped">
 						<thead>
 							<tr>
-								<th class="text-center">CURSO</th>
-								<th class="text-center">SECCIÓN</th>
-								<th class="text-center">VACANTES</th>
-								<th class="text-center">HORARIO</th>
-								<th class="text-center">ESTUDIANTES</th>
+								<th class="text-center">CÓDIGO</th>
+								<th class="text-center">CARRERA</th>
+								<th class="text-center">NOMBRES</th>
+								<th class="text-center">APELLIDOS</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="seccion: ${listaSecciones}">
-								<td class="text-center celda" th:text="${seccion.curso.codigo} + ' - ' + ${seccion.curso.nombre}"></td>
-								<td class="text-center celda" th:text="${seccion.codigo}"></td>
-								<td class="text-center celda" th:text="${seccion.vacantes}  + '/10'"></td>
-								<td class="text-center celda" th:text="${seccion.horario}"></td>
-								<td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/uDocente/seccion/}+${seccion.codigo}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+							<tr th:each="estudiante: ${listaEstudiantes}">
+								<td class="text-center celda" th:text="${estudiante.codigo}"></td>
+								<td class="text-center celda" th:text="${estudiante.carrera.nombre}"></td>
+								<td class="text-center celda" th:text="${estudiante.nombres}"></td>
+								<td class="text-center celda" th:text="${estudiante.apellidos}"></td>
 							</tr>
 						</tbody>
 					</table> 	

@@ -10,4 +10,5 @@ public interface IEstudianteService {
 	public void eliminar(String codigoEstudiante);
 	public Estudiante buscarId(String codigoEstudiante);
 	public List<Estudiante> listar();
+	public List<Estudiante> listarSeccion(String codigoSeccion, int idSemestre);
 }

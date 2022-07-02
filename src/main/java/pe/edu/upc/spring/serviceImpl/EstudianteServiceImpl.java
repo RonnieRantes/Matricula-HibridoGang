@@ -11,11 +11,18 @@ import pe.edu.upc.spring.model.Estudiante;
 import pe.edu.upc.spring.repository.IEstudianteRepository;
 import pe.edu.upc.spring.service.IEstudianteService;
 
+import pe.edu.upc.spring.model.Matricula;
+import pe.edu.upc.spring.repository.IMatriculaRepository;
+import pe.edu.upc.spring.service.IMatriculaService;
+
 @Service
 public class EstudianteServiceImpl implements IEstudianteService {
 
 	@Autowired
 	private IEstudianteRepository dEstudiante;
+	@Autowired
+    private IMatriculaRepository dMatricula;
+	
 
 	@Override
 	public String Codigo(int anio, int periodo) {
@@ -64,4 +71,17 @@ public class EstudianteServiceImpl implements IEstudianteService {
 	public List<Estudiante> listar() {
 		return dEstudiante.findAll();
 	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Estudiante> listarSeccion(String codigoSeccion, int idSemestre);
+		List<Estudiante> lst = new ArrayList<Estudiante>();
+		for(Matricula m : dMatricula.MatriculaSeccion(idSemestre, codigoSeccion)){
+			if(m.getSeccion().getCodigo().equals(codigoSeccion)){
+				lst.add(dEstudiante.buscarId(m.getEstudiante().getCodigo()));
+			}
+		}
+		return lst;
+	}
+
 }
