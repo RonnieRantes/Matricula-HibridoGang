@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,7 +75,7 @@ public class EstudianteServiceImpl implements IEstudianteService {
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Estudiante> listarSeccion(String codigoSeccion, int idSemestre);
+	public List<Estudiante> listarSeccion(String codigoSeccion, int idSemestre){
 		List<Estudiante> lst = new ArrayList<Estudiante>();
 		for(Matricula m : dMatricula.MatriculaSeccion(idSemestre, codigoSeccion)){
 			if(m.getSeccion().getCodigo().equals(codigoSeccion)){
