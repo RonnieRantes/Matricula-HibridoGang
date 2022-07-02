@@ -86,7 +86,7 @@ public class PanelEstudiante {
             	List<Seccion> lst = seService.listarSeccionesCurso(idCurso);
             	for(Seccion s : lst) {
             		s.setVacantes(mService.vacantesSeccion(s.getCodigo(), semestre));
-            		s.setHorario("Lunes - Viernes");
+            		s.setHorario(hService.horariosSeccion(s.getCodigo()));
             		s.setMatriculado(mService.comprobarSeccion(s.getCodigo(), semestre, logeado.getName(), idCurso));
             	}
             	model.addAttribute("listaSecciones", lst);
