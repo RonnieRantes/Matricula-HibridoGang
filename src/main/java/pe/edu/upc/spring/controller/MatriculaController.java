@@ -42,7 +42,7 @@ public class MatriculaController {
         return "redirect:/uEstudiante/matricula/";
     }
     @RequestMapping("/eliminar")
-    public String eliminar(@RequestParam(value="id") int id, RedirectAttributes objRedir) {
+    public String eliminar(@RequestParam(value="id") int id, Principal logeado, RedirectAttributes objRedir) {
         try {
             if (id>0) {
                 mService.eliminar(id);
@@ -51,6 +51,7 @@ public class MatriculaController {
         catch(Exception ex) {
             objRedir.addFlashAttribute("mensaje","Ocurrio un error");
         }
-        return "redirect:/admin/cursos/";
+        if(logeado.getName().equals("U000000000")) return "redirect:/admin/cursos/";
+        else return "redirect:/uEstudiante/matricula/";
     }
 }

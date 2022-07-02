@@ -14,6 +14,8 @@ import pe.edu.upc.spring.service.ICursoCarreraService;
 import pe.edu.upc.spring.service.ICursoService;
 import pe.edu.upc.spring.service.IDocenteService;
 import pe.edu.upc.spring.service.IEstudianteService;
+import pe.edu.upc.spring.service.IHorarioService;
+import pe.edu.upc.spring.service.IMatriculaService;
 import pe.edu.upc.spring.service.ISeccionService;
 import pe.edu.upc.spring.service.ISemestreService;
 
@@ -34,6 +36,10 @@ public class PanelAdminController {
 	private ISeccionService seService;
 	@Autowired
 	private ICursoCarreraService ccService;
+	@Autowired
+	private IMatriculaService mService;
+	@Autowired
+	private IHorarioService hService;
 
 	@RequestMapping("/estudiantes/")
 	public String irPaginaEstudiantes(Model model) {
@@ -69,6 +75,18 @@ public class PanelAdminController {
 	public String irPaginaDocentes(Model model) {
 		model.addAttribute("listaDocentes", dService.listar());
 		return "Admin/lstDocente";
+	}
+	
+	@RequestMapping("/matriculas/")
+	public String irPaginaMatriculas(Model model) {
+		model.addAttribute("listaMatriculas", mService.listar());
+		return "Admin/lstMatricula";
+	}
+	
+	@RequestMapping("/horarios/")
+	public String irPaginaHorarios(Model model) {
+		model.addAttribute("listaHorarios", hService.listar());
+		return "Admin/lstHorario";
 	}
 	
 	@RequestMapping("/carreras/{idCarrera}")
