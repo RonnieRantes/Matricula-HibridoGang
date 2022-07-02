@@ -52,4 +52,10 @@ public class SeccionServiceImpl implements ISeccionService {
     public List<Seccion> listarSeccionesCurso(String codigoCurso) {
         return dSeccion.SeccionesCurso(codigoCurso);
     }
+	
+	@Override
+    @Transactional(readOnly=true)
+    public List<Seccion> listarDocente(String codigoDocente) {
+        return dSeccion.DocentesCurso(codigoDocente);
+    }
 }

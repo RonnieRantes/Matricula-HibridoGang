@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             <tr th:each="matricula: ${listaMatriculas}">
-                <td class="text-center celda"><a th:href="@{'/matricula/modificar/'}+${matricula.idMatricula}" th:text="${matricula.idMatricula}"></a></td>
+                <td class="text-center celda" th:text="${matricula.idMatricula}"></td>
                 <td class="text-center celda" th:text="${matricula.semestre.getCompleto()}"></td>
                 <td class="text-center celda" th:text="${matricula.seccion.curso.nombre} + ' - ' + ${matricula.seccion.codigo}"></td>
 				<td class="text-center celda" th:text="${matricula.estudiante.nombres} + ' ' + ${matricula.estudiante.apellidos}"></td>
@@ -49,7 +49,7 @@
         <h4 th:text="${mensaje}" class="error"></h4>
     </div>
 </div>
-<script>$('table').DataTable({ info: false, searching: false, lengthChange: false, pageLength: 5,
+<script>$('table').DataTable({ info: false, searching: true, lengthChange: false, pageLength: 5,
     dom: 't<"pag2"f><"pag"p>', oLanguage: { oPaginate: { sPrevious: "Anterior", sNext: "Siguiente"}} });</script>
 <div th:replace="fragments/footer :: footer"></div>
 </body>

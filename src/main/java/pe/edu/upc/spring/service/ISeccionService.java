@@ -10,4 +10,5 @@ public interface ISeccionService {
     public Seccion buscarId(String idSeccion);
     public List<Seccion> listar();
     public List<Seccion> listarSeccionesCurso(String codigoCurso);
+	public List<Seccion> listarDocente(String codigoDocente);
 }

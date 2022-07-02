@@ -13,4 +13,7 @@ import pe.edu.upc.spring.model.Seccion;
 public interface ISeccionRepository extends JpaRepository<Seccion,String> {
 	@Query("from Seccion s where s.curso.codigo = :codigo")
 	List<Seccion> SeccionesCurso(@Param("codigo") String codigoCurso); //findAll
+	@Query("from Seccion s where s.docente.codigo = :codigo")
+	List<Seccion> DocentesCurso(@Param("codigo") String codigoDocente); //findAll
+
 }
