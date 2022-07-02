@@ -59,6 +59,7 @@ public class PanelDocente {
 		int semestre = 1;
 		for(Seccion s : lst) {
 			s.setVacantes(mService.vacantesSeccion(s.getCodigo(), semestre));
+			System.out.println(hService.horariosSeccion(s.getCodigo());
 			s.setHorario(hService.horariosSeccion(s.getCodigo()));
 		}
 		model.addAttribute("listaSecciones", lst);
