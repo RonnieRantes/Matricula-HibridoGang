@@ -22,10 +22,7 @@
             <a th:href="@{/inicio/}" class="btn btn-primary btninvertido">Regresar</a>
         </div>
         <div class="col-sm-6 colttexto">
-            <h1>Secciones</h1>
-        </div>
-        <div class="col-sm-6 coltboton">
-            <a th:href="@{/seccion/}" class="btn btn-primary">Agregar</a>
+            <h1>Matrículas</h1>
         </div>
     </div>
     <div class="perfil">
@@ -33,17 +30,19 @@
             <thead>
             <tr>
                 <th class="text-center">CÓDIGO</th>
-                <th class="text-center">CURSO</th>
-                <th class="text-center">DOCENTE</th>
+                <th class="text-center">SEMESTRE</th>
+                <th class="text-center">SECCIÓN</th>
+                <th class="text-center">ESTUDIANTE</th>
                 <th class="text-center"></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="seccion: ${listaSecciones}">
-                <td class="text-center celda"><a th:href="@{'/seccion/modificar/'}+${seccion.codigo}" th:text="${seccion.codigo}"></a></td>
-                <td class="text-center celda" th:text="${seccion.curso.codigo} + ' - ' + ${seccion.curso.nombre}"></td>
-                <td class="text-center celda" th:text="${seccion.docente.nombres} + ' ' + ${seccion.docente.apellidos}"></td>
-                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/seccion/eliminar/?id=}+${seccion.codigo}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+            <tr th:each="matricula: ${listaMatriculas}">
+                <td class="text-center celda"><a th:href="@{'/matricula/modificar/'}+${matricula.idMatricula}" th:text="${matricula.idMatricula}"></a></td>
+                <td class="text-center celda" th:text="${matricula.semestre.getCompleto()}"></td>
+                <td class="text-center celda" th:text="${matricula.seccion.curso.nombre} + ' - ' + ${matricula.seccion.codigo}"></td>
+				<td class="text-center celda" th:text="${matricula.estudiante.nombres} + ' ' + ${matricula.estudiante.apellidos}"></td>
+                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/matricula/eliminar/?id=}+${matricula.idMatricula}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
             </tr>
             </tbody>
         </table>
