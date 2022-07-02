@@ -23,6 +23,7 @@ import pe.edu.upc.spring.service.IEstudianteService;
 import pe.edu.upc.spring.service.IMatriculaService;
 import pe.edu.upc.spring.service.ISeccionService;
 import pe.edu.upc.spring.service.ISemestreService;
+import pe.edu.upc.spring.service.IHorarioService;
 
 @Controller
 @RequestMapping("/uEstudiante")
@@ -43,12 +44,15 @@ public class PanelEstudiante {
 	private ICursoCarreraService ccService;
 	@Autowired
 	private IMatriculaService mService;
+	@Autowired
+	private IHorarioService hService;
 
 	@RequestMapping("/horario/")
-	public String irPaginaHorario(Model model) {
-		model.addAttribute("listaEstudiantes", eService.listar());
-		return "consultahorario";
+	public String irPaginaHorario(Model model, Principal logeado) {
+		model.addAttribute("listaHorarios", hService.horariosEstudiante(logeado.getName()));
+		return "Admin/lstHorario";
 	}
+	
 	@RequestMapping("/matricula/")
 	public String irPaginaMatricula(Principal logeado, Model model) {
 		//Estudiante
