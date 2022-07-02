@@ -57,6 +57,7 @@ public class PanelEstudiante {
 		List<CursoCarrera> lst = ccService.listarCursosDeCarrera(usr.getCarrera().getIdCarrera());
 		for(CursoCarrera cc : lst) {
 			cc.setMatriculado(mService.comprobarCurso(cc.getCurso().getCodigo(), logeado.getName(), semestre));
+			System.out.println("COMP" + cc.isMatriculado());
 		}
 		model.addAttribute("creditos", mService.creditosAlumnoSemestre(logeado.getName(), semestre));
 		model.addAttribute("listaHabiles", lst);
@@ -80,7 +81,6 @@ public class PanelEstudiante {
             		s.setVacantes(mService.vacantesSeccion(s.getCodigo(), semestre));
             		s.setHorario("Lunes - Viernes");
             		s.setMatriculado(mService.comprobarSeccion(s.getCodigo(), semestre, logeado.getName(), idCurso));
-					System.out.println("COMP" + s.isMatriculado());
             	}
             	model.addAttribute("listaSecciones", lst);
         		model.addAttribute("matricula", objM);
