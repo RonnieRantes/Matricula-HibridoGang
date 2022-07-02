@@ -55,7 +55,14 @@ public class PanelDocente {
 	
 	@RequestMapping("/secciones/")
 	public String irPaginaSecciones(Principal logeado, Model model, RedirectAttributes objRedir) {
-		model.addAttribute("listaSecciones", seService.listarDocente(logeado.getName()));
+		List<Seccion> lst = seService.listarDocente(logeado.getName());
+		int semestre = 1;
+		for(Seccion s : lst) {
+			s.setVacantes(mService.vacantesSeccion(s.getCodigo(), semestre));
+			System.out.println(hService.horariosSeccion(s.getCodigo());
+			s.setHorario(hService.horariosSeccion(s.getCodigo()));
+		}
+		model.addAttribute("listaSecciones", lst);
 		model.addAttribute("titulo", "Secciones");
 		model.addAttribute("btn", "Registrar");
 		return "consultasecciondocente";
