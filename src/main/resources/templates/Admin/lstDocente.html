@@ -33,6 +33,7 @@
             <thead>
             <tr>
                 <th class="text-center">CÓDIGO</th>
+                <th class="text-center">CONTRASEÑA</th>
                 <th class="text-center">NOMBRES</th>
                 <th class="text-center">APELLIDOS</th>
                 <th class="text-center">CORREO EDUCATIVO</th>
@@ -44,6 +45,7 @@
             <tbody>
             <tr th:each="docente: ${listaDocentes}">
                 <td class="text-center celda"><a th:href="@{'/docente/modificar/'}+${docente.codigo}" th:text="${docente.codigo}"></a></td>
+				<td class="text-center celda" th:text="${docente.apellidos.substring(0,1)} + ${docente.nombres.substring(0,1)} + ${docente.codigo}"></td>
                 <td class="text-center celda" th:text="${docente.nombres}"></td>
                 <td class="text-center celda" th:text="${docente.apellidos}"></td>
                 <td class="text-center celda" th:text="${docente.correoedu}"></td>
