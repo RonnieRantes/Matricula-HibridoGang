@@ -24,8 +24,8 @@ public class InicioController {
 			return "redirect:/login/";
 		}
 		else {
-			if (objUsuario.getRol().getNombre().equals("ROLE_ADMINISTRADOR")) return "inicio-admin";
-			else if (objUsuario.getRol().getNombre().equals("ROLE_DOCENTE"))return "inicio-docente";
+			if (logeado.getName().equals("U000000000")) return "inicio-admin";
+			else if (logeado.getName().substring(0,1).equals("P"))return "inicio-docente";
 			else return "inicio-estudiante";
 		}
 	}
