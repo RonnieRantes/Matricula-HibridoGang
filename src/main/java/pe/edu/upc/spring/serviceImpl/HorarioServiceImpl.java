@@ -70,13 +70,6 @@ public class HorarioServiceImpl implements IHorarioService {
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Horario> horariosDocente() {
-		return dHorario.findAll();
-	}
-
-	
-	@Override
-	@Transactional(readOnly=true)
     public String horariosSeccion(String codigoSeccion) {
 		List<Horario> lst = dHorario.HorariosSeccion(codigoSeccion);
 		String horarios = "";
