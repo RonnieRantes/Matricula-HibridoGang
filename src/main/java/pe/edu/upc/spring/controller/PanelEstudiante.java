@@ -50,7 +50,7 @@ public class PanelEstudiante {
 	@RequestMapping("/horario/")
 	public String irPaginaHorario(Model model, Principal logeado) {
 		model.addAttribute("listaHorarios", hService.horariosEstudiante(logeado.getName()));
-		return "Admin/lstHorario";
+		return "Admin/lstHorario2";
 	}
 	
 	@RequestMapping("/matricula/")

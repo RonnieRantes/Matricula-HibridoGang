@@ -58,6 +58,15 @@ public class HorarioController {
         else {
             model.addAttribute("titulo", "Modificar horario");
             model.addAttribute("btn", "Actualizar");
+			int iMinutos = objH.getInicio() % 100;
+			int iHoras = (objH.getInicio() - iMinutos)/100;
+			int fMinutos = objH.getFin() % 100;
+			int fHoras = (objH.getFin() - fMinutos)/100;
+
+			objH.setInicioHoras(iHoras);
+			objH.setInicioMinutos(iMinutos);
+			objH.setFinHoras(fHoras);
+			objH.setFinMinutos(fMinuto);
             model.addAttribute("horario", objH);
             return "Entidad/horario";
         }

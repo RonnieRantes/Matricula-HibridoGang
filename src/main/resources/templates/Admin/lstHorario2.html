@@ -24,30 +24,23 @@
         <div class="col-sm-6 colttexto">
             <h1>Horario</h1>
         </div>
-        <div class="col-sm-6 coltboton">
-            <a th:href="@{/horario/}" class="btn btn-primary">Agregar</a>
-        </div>
     </div>
     <div class="perfil">
         <table class="table table-hover table-striped">
             <thead>
             <tr>
-                <th class="text-center">CÓDIGO</th>
-                <th class="text-center">SECCIÓN</th>
+                <th class="text-center">CURSO</th>
                 <th class="text-center">DÍA</th>
 				<th class="text-center">HORA INICIO</th>
 				<th class="text-center">HORA FIN</th>
-                <th class="text-center"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="horario: ${listaHorarios}">
-                <td class="text-center celda"><a th:href="@{'/horario/modificar/'}+${horario.idHorario}" th:text="${horario.idHorario}"></a></td>
                 <td class="text-center celda" th:text="${horario.seccion.curso.nombre} + ' - ' + ${horario.seccion.codigo}"></td>
                 <td class="text-center celda" th:text="${horario.dia()}"></td>
                 <td class="text-center celda" th:text="${horario.horaInicio()}"></td>
                 <td class="text-center celda" th:text="${horario.horaFin()}"></td>
-                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/horario/eliminar/?id=}+${horario.idHorario}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
             </tr>
             </tbody>
         </table>
