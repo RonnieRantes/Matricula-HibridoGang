@@ -53,7 +53,7 @@ public class PanelDocente {
 		return "Admin/lstHorario2";
 	}
 	
-	@RequestMapping("/secciones/}")
+	@RequestMapping("/secciones/")
 	public String irPaginaSecciones(Principal logeado, Model model, RedirectAttributes objRedir) {
 		model.addAttribute("listaSecciones", seService.listarDocente(logeado.getName()));
 		model.addAttribute("titulo", "Secciones");
