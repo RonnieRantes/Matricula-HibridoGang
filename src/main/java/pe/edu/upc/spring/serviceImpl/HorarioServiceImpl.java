@@ -16,6 +16,10 @@ import pe.edu.upc.spring.model.Matricula;
 import pe.edu.upc.spring.repository.IMatriculaRepository;
 import pe.edu.upc.spring.service.IMatriculaService;
 
+import pe.edu.upc.spring.model.Seccion;
+import pe.edu.upc.spring.repository.ISeccionRepository;
+import pe.edu.upc.spring.service.ISeccionService;
+
 @Service
 public class HorarioServiceImpl implements IHorarioService {
 
@@ -23,6 +27,8 @@ public class HorarioServiceImpl implements IHorarioService {
 	private IHorarioRepository dHorario;
 	@Autowired
     private IMatriculaRepository dMatricula;
+	@Autowired
+    private ISeccionRepository dSeccion;
 
 
 	@Override
@@ -68,6 +74,19 @@ public class HorarioServiceImpl implements IHorarioService {
 		return lst;
 	}
 	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Horario> horariosDocente(String codigoDocente) {
+		List<Horario> lst = new ArrayList<Horario>();
+		for(Horario h : dHorario.findAll()){
+			if(h.getSeccion().getDocente().getCodigo().equals(codigoDocente)){
+				lst.add(h);
+			}
+		}
+		
+		return lst;
+	}
+		
 	@Override
 	@Transactional(readOnly=true)
     public String horariosSeccion(String codigoSeccion) {

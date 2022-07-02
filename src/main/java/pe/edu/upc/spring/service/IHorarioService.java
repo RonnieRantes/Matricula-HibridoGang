@@ -11,4 +11,5 @@ public interface IHorarioService {
     public List<Horario> listar();
     public String horariosSeccion(String codigoSeccion);
 	public List<Horario> horariosEstudiante(String codigoEstudiante);
+	public List<Horario> horariosDocente(String codigoDocente);
 }
