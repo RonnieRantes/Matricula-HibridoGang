@@ -66,7 +66,7 @@ public class HorarioController {
 			objH.setInicioHoras(iHoras);
 			objH.setInicioMinutos(iMinutos);
 			objH.setFinHoras(fHoras);
-			objH.setFinMinutos(fMinuto);
+			objH.setFinMinutos(fMinutos);
             model.addAttribute("horario", objH);
             return "Entidad/horario";
         }
