@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.cdnfonts.com/css/lexend-deca" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+    <link href="/css/general.css" rel="stylesheet" id="general-css"></link>
+    <link href="/css/formulario.css" rel="stylesheet" id="general-css"></link>
+</head>
+<body>
+<div th:replace="fragments/navbar :: nav"></div>
+<form class="container cont1" th:action="@{/seccion/registrar}" method="post" th:object="${horario}">
+    <div class="form-group row perfil" style="margin-bottom: 1.5%;">
+        <h1 th:text="${titulo}"></h1>
+    </div>
+    <input class="form-control text-center" type="hidden" th:field="*{idHorario}"/>
+    <div class="perfil">
+        <div class="col-sm-6 coltexto">
+            <h3>Día:</h3>
+        </div>
+        <div class="col-sm-6 colinput">
+            <select class="form-control text-center" th:field="*{dia}">
+                <option value="1">Lunes</option>
+                <option value="2">Martes</option>
+                <option value="3">Miércoles</option>
+                <option value="4">Jueves</option>
+                <option value="5">Viernes</option>
+                <option value="6">Sábado</option>
+                <option value="7">Domingo</option>
+            </select>
+        </div>
+   	</div>
+   	<div class="perfil">
+        <div class="col-sm-6 coltexto">
+            <h3>Inicio:</h3>
+        </div>
+        <div class="col-sm-6 colinput">
+   	    	<input class="form-control text-center" type="number" style="width: 46.5%;" th:field="*{inicioHoras}"/>
+   	    	<h4>&nbsp&nbsp:&nbsp&nbsp</h4>
+   	    	<input class="form-control text-center" type="number" style="width: 46.5%;" th:field="*{inicioMinutos}"/>
+        </div>
+   	</div>
+   	<div class="perfil">
+        <div class="col-sm-6 coltexto">
+            <h3>Fin:</h3>
+        </div>
+        <div class="col-sm-6 colinput">
+   	    	<input class="form-control text-center" type="number" style="width: 46.5%;" th:field="*{finHoras}"/>
+   	    	<h4>&nbsp&nbsp:&nbsp&nbsp</h4>
+   	    	<input class="form-control text-center" type="number" style="width: 46.5%;" th:field="*{finMinutos}"/>
+        </div>
+   	</div>
+   	
+    <div class="perfil">
+        <div class="col-sm-6 coltexto">
+            <h3>Sección:</h3>
+        </div>        
+        
+        <div class="col-sm-6 colinput">
+            <select class="form-control text-center" th:field="*{seccion.codigo}">
+                <option th:each="c: ${listaSecciones}"
+                        th:value="${c.codigo}"
+                        th:text="${c.curso.nombre} + ' - ' + ${c.codigo}"
+                        th:selected="(${c.codigo} == *{seccion.codigo})">
+                </option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row perfil" style="margin-bottom: 0%;">
+        <div class="col-sm-6 colajustes izquierda">
+            <a th:href="@{/admin/secciones/}" class="btn btninvertido btnajustes">Regresar</a>
+        </div>
+        <div class="col-sm-6 colajustes derecha">
+            <button type="submit" class="btn btn-primary btnajustes" th:text="${btn}"></button>
+        </div>
+    </div>
+    <h4 th:text="${mensaje}" class="error"></h4>
+</form>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

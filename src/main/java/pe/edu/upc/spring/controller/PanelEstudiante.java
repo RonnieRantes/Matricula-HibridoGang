@@ -55,13 +55,16 @@ public class PanelEstudiante {
 		int semestre = 1;
 		Estudiante usr = eService.buscarId(logeado.getName());
 		List<CursoCarrera> lst = ccService.listarCursosDeCarrera(usr.getCarrera().getIdCarrera());
+		List<Matricula> lst2 = mService.listarMatriculasEstudianteSemestre(usr.getCodigo(), semestre);
 		for(CursoCarrera cc : lst) {
-			cc.setMatriculado(mService.comprobarCurso(cc.getCurso().getCodigo(), logeado.getName(), semestre));
-			System.out.println("COMP" + cc.isMatriculado());
+			cc.setMatriculado(mService.comprobarCurso(logeado.getName(), cc.getCurso().getCodigo(), semestre));
 		}
+    	for(Matricula m : lst2) {
+    		m.getSeccion().setVacantes(mService.vacantesSeccion(m.getSeccion().getCodigo(), semestre));
+    	}
 		model.addAttribute("creditos", mService.creditosAlumnoSemestre(logeado.getName(), semestre));
 		model.addAttribute("listaHabiles", lst);
-		model.addAttribute("listaMatriculados", mService.listarMatriculasEstudianteSemestre(usr.getCodigo(), semestre));
+		model.addAttribute("listaMatriculados", lst2);
 		return "cursoshabiles";
 	}
 
@@ -72,7 +75,7 @@ public class PanelEstudiante {
             	int semestre = 1;
             	Curso curso = cuService.buscarId(idCurso);
             	Matricula objM = new Matricula(); 
-            	if(mService.comprobarCurso(idCurso, logeado.getName(), semestre)) {
+            	if(mService.comprobarCurso(logeado.getName(), idCurso , semestre)) {
             		objM.setIdMatricula(mService.buscarCurso(idCurso, logeado.getName(), semestre).getIdMatricula());
             	}
             	else objM.setIdMatricula(0);

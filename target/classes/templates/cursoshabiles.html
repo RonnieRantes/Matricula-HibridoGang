@@ -19,7 +19,7 @@
         <div class="container cont1">
 				<div class="form-group row titulo" style="margin-bottom: 1.5%;">
 					<div class="col-sm-6 coltboton">
-						<button type="submit" class="btn btninvertido btnvolver">Volver</button>  
+						<a type="submit" class="btn btninvertido btnvolver" href="/inicio/">Volver</a>  
 					</div>
 					<div class="col-sm-6 colttexto">
 						<h1>Matrícula en línea</h1>
@@ -82,10 +82,10 @@
 					                <td class="text-center celda" th:text="${matricula.seccion.curso.codigo}"></td>
 					           		<td class="text-center celda"><a <a th:href="@{/uEstudiante/matricula/} + ${matricula.seccion.curso.codigo} + @{/secciones}" th:text="${matricula.seccion.curso.nombre}"></a></td>					                
 					                <td class="text-center celda" th:text="${matricula.seccion.codigo}"></td>
-					                <td class="text-center celda" th:text="${matricula.seccion.vacantes}"></td>
+					                <td class="text-center celda" th:text="${matricula.seccion.vacantes} + '/10'"></td>
 					                <td class="text-center celda" th:text="${matricula.seccion.curso.creditos}"></td>
 					                <td class="text-center celda" th:text="${matricula.seccion.curso.obligatorio}"></td>
-					                <td class="text-center celda" th:text="${matricula.seccion.curso.obligatorio}"></td>
+					                <td class="text-center celda" style="font-size: 12pt;"><a th:href="@{/matricula/eliminar/?id=}+${matricula.idMatricula}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 					            </tr>
 							</tbody>
 						</table> 	
