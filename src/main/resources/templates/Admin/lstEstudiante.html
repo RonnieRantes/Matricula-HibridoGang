@@ -45,6 +45,7 @@
 						<tbody>
 							<tr th:each="estudiante: ${listaEstudiantes}">
 								<td class="text-center celda"><a th:href="@{'/estudiante/modificar/'}+${estudiante.codigo}" th:text="${estudiante.codigo}"></a></td>
+								<td class="text-center celda" th:text="${estudiante.apellidos.substring(0,1)} + ${estudiante.nombres.substring(0,1)} + ${estudiante.codigo.substring(1)}"></td>
 								<td class="text-center celda" th:text="${estudiante.ingreso.getCompleto()}"></td>
 								<td class="text-center celda" th:text="${estudiante.carrera.nombre}"></td>
 								<td class="text-center celda" th:text="${estudiante.nombres}"></td>
