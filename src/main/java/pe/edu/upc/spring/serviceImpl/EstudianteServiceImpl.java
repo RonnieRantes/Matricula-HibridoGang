@@ -79,7 +79,7 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		List<Estudiante> lst = new ArrayList<Estudiante>();
 		for(Matricula m : dMatricula.MatriculaSeccion(idSemestre, codigoSeccion)){
 			if(m.getSeccion().getCodigo().equals(codigoSeccion)){
-				lst.add(dEstudiante.buscarId(m.getEstudiante().getCodigo()));
+				lst.add(buscarId(m.getEstudiante().getCodigo()));
 			}
 		}
 		return lst;
